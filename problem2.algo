@@ -1,0 +1,35 @@
+PROCEDURE dot_product (var ps INTEGER, n,x : INTEGER, tab1,tab2  : ARRAY_OF INTEGER;)
+VAR
+    i,j : INTEGER := 0;
+BEGIN
+ps := 0;
+    
+IF (n<>x) THEN
+    ps := -1;
+ELSE
+    WHILE (i>n and j>x) DO
+        ps:= ps + tab1[i]*tab2[j];
+        i:=i+1;
+        j:=j+1;
+    END_WHILE
+END_IF
+   
+END
+ALGORITHM Dot-product
+VAR
+    tab1,tab2 ARRAY_OF INTEGER[50];
+    ps,n,x : INTEGER;
+BEGIN
+    REPEAT
+        write("give me the lenght of the first table");
+        read(n);
+        write("give me the lenght of the second table");
+        read(x);
+    UNTIL ((n>0 and n<=50) and (x>0 and x<=50))
+    dot_product(ps,n,x,tab1,tab2);
+    IF (ps=0) THEN
+        write("the two vectors are orthogonal");
+    ELSE
+        write("the two vectors aren't orthogonal");
+    END_IF
+END
